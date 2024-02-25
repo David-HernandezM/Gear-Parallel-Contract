@@ -1,0 +1,36 @@
+[package]
+name = "paralel-contract"
+version.workspace = true
+edition.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+paralel-contract-io.workspace = true
+gstd.workspace = true
+
+[build-dependencies]
+gear-wasm-builder.workspace = true
+paralel-contract-io.workspace = true
+gmeta.workspace = true
+
+# [workspace]
+# members = ["io"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[workspace.dependencies]
+
+paralel-contract-io.path = "io"
+
+galloc = "1.1.1"
+gcli = "1.1.1"
+gclient = "1.1.1"
+gcore = "1.1.1"
+gear-wasm-builder = "1.1.1"
+gmeta = "1.1.1"
+gsdk = "1.1.1"
+gstd = "1.1.1"
+gtest = "1.1.1"
