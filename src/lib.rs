@@ -31,6 +31,7 @@ async fn main() {
     }
     
     match message {
+        // will do the number of iterations indicated
         ContractAction::Iterate(times) => {
             state.iterating = true;
             for i in 0..times {}
@@ -39,6 +40,7 @@ async fn main() {
             msg::reply(ContractEvent::Iterated, 0)
                 .expect("Error sending reply");
         },
+        // will do the the maximum iterations (max value in i128)
         ContractAction::IterateMax => {
             state.iterating = true;
             for i in 0..17014118346046923173168730371588410572i128 {}
@@ -47,6 +49,7 @@ async fn main() {
             msg::reply(ContractEvent::Iterated, 0)
                 .expect("Error sending reply");
         },
+        // will wait the indicated minutes
         ContractAction::WaitAmountOfMinutes(minutes) => {
             if state.waiting {
                 msg::reply(ContractEvent::IsWaiting, 0) 
@@ -68,6 +71,7 @@ async fn main() {
             msg::reply(ContractEvent::Waited, 0)
                 .expect("Error sending reply");
         },
+        // will wait the blocks minutes
         ContractAction::WaitAmountOfBlocks(blocks) => {
             if state.waiting {
                 msg::reply(ContractEvent::IsWaiting, 0) 
@@ -90,6 +94,7 @@ async fn main() {
             msg::reply(ContractEvent::Waited, 0)
                 .expect("Error sending reply");
         },
+        // Change the state for waiting field
         ContractAction::ChangeStateWaitingTo(change) => {
             match change {
                 WaitingState::Waiting => state.waiting = true,
